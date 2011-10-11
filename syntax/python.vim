@@ -71,6 +71,8 @@
 "    For "print" builtin as function:
 "       python_print_as_function
 
+let python_highlight_all = 1
+
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
 if version < 600
@@ -248,6 +250,7 @@ if exists("python_highlight_builtin_objs") && python_highlight_builtin_objs != 0
   " Builtin objects and types
   syn keyword pythonBuiltinObj	True False Ellipsis None NotImplemented
   syn keyword pythonBuiltinObj	__debug__ __doc__ __file__ __name__ __package__
+  syn keyword pythonBuiltinObj	self
 endif
 
 if exists("python_highlight_builtin_funcs") && python_highlight_builtin_funcs != 0
@@ -307,6 +310,7 @@ else
   syn sync maxlines=200
 endif
 
+
 if version >= 508 || !exists("did_python_syn_inits")
   if version <= 508
     let did_python_syn_inits = 1
@@ -314,6 +318,8 @@ if version >= 508 || !exists("did_python_syn_inits")
   else
     command -nargs=+ HiLink hi def link <args>
   endif
+
+  syn match pythonOper    "=/|+/|-/|*/|{/|}/|[/|]/|(/|)/|/./|,"
 
   HiLink pythonStatement	Statement
   HiLink pythonPreCondit	Statement
@@ -368,6 +374,8 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonBuiltinFunc	Function
 
   HiLink pythonExClass	Structure
+
+  HiLink pythonOper Operator " SpecialKey
 
   delcommand HiLink
 endif
