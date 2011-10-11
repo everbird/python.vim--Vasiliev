@@ -190,6 +190,7 @@ syn region pythonRawString	start=+[rR]'+ skip=+\\\\\|\\'\|\\$+ excludenl end=+'+
 syn region pythonRawString	start=+[rR]"+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end=+$+ keepend contains=pythonRawEscape,@Spell
 syn region pythonRawString	start=+[rR]"""+ end=+"""+ keepend contains=pythonDocTest2,pythonSpaceError,@Spell
 syn region pythonRawString	start=+[rR]'''+ end=+'''+ keepend contains=pythonDocTest,pythonSpaceError,@Spell
+syn region pythonComment start=+\(:\n[\t ]*\)\@<=\z('''\|"""\)+ end=+\z1+ keepend contains=pythonEscape,pythonTodo,@Spell
 
 syn match pythonRawEscape	+\\['"]+ display transparent contained
 
